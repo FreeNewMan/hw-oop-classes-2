@@ -1,9 +1,8 @@
-import {actors} from "../Character"
 import Bowerman from "../Bowerman";
 
 describe('Проверка класса Bowerman', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Bowerman')[0];
-    expect(new Bowerman(testObject)).toEqual(testObject);
+    const testObject = {name: 'Bowerman', type: 'Bowerman', health: 100, level: 1, attack: 25, defence: 25};
+    expect(new Bowerman('Bowerman')).toEqual(testObject);
   }); 
 }); 

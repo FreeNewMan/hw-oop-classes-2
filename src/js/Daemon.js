@@ -1,9 +1,12 @@
-import Character, {actors} from './Character';
+import Character from './Character';
 
 class Daemon extends Character {
-  constructor() {
-    super(actors.filter(item => item.type==='Daemon')[0]);
+  constructor(name, type = 'Daemon') {
+    super(name, type);
+    this.attack = 10;
+    this.defence = 40;
     }
 }
+
 export default Daemon;
 

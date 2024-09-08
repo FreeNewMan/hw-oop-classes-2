@@ -1,11 +1,9 @@
-import {actors} from "../Character"
 import Swordsman from "../Swordsman";
 
 describe('Проверка класса Swordsman', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Swordsman')[0];
-    expect(new Swordsman(testObject)).toEqual(testObject);
+    const testObject =  {name: 'Swordsman', type: 'Swordsman', health: 100, level: 1, attack: 40, defence: 10};
+    expect(new Swordsman('Swordsman')).toEqual(testObject);
   }); 
 }); 
- 
-export default Swordsman;
+

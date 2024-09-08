@@ -1,11 +1,9 @@
-import {actors} from "../Character"
 import Magician from "../Magician";
-
+ 
 describe('Проверка класса Magician', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Magician')[0];
-    expect(new Magician(testObject)).toEqual(testObject);
+    const testObject =  {name: 'Magician', type: 'Magician', health: 100, level: 1, attack: 10, defence: 40};
+    expect(new Magician('Magician')).toEqual(testObject);
   }); 
 }); 
- 
-export default Magician;
+

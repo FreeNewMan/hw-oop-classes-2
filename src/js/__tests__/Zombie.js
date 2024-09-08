@@ -1,11 +1,8 @@
-import {actors} from "../Character"
 import Zombie  from "../Zombie ";
 
-describe('Проверка класса Zombie ', () => { 
+describe('Проверка класса Zombie', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Zombie')[0];
-    expect(new Zombie (testObject)).toEqual(testObject);
+    const testObject =  {name: 'Zombie', type: 'Zombie', health: 100, level: 1, attack: 40, defence: 10};
+    expect(new Zombie('Zombie')).toEqual(testObject);
   }); 
 }); 
- 
-export default Zombie ;

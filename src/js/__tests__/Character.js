@@ -1,52 +1,42 @@
-import Character, {actors} from "../Character"
+import Character from "../Character";
 
 describe('Проверка класса Character', () => { 
   test('Проверка длины имени наименьшее ', () => {
-    expect(() => new Character({name: 'B', type: 'Bowerman', health: 100, level: 1, attack: 25, defence: 25})).toThrowError("Имя игрока должно быть длиной от 2 до 10 символов")
+    expect(() => new Character('B','Bowerman')).toThrowError("Имя игрока должно быть длиной от 2 до 10 символов")
   });
   test('Проверка длины имени наибольшее ', () => {
-    expect(() => new Character({name: 'BowermanBowerman', type: 'Bowerman', health: 100, level: 1, attack: 25, defence: 25})).toThrowError("Имя игрока должно быть длиной от 2 до 10 символов")
+    expect(() => new Character('BowermanBowerman','Bowerman')).toThrowError("Имя игрока должно быть длиной от 2 до 10 символов")
   });
   test('Проверка типа персонажа', () => {
-    expect(() => new Character({name: 'Noname', type: 'Noname', health: 100, level: 1, attack: 25, defence: 25})).toThrowError("Неизвестный персонаж")
-  });
-  test('Проверка создания ожидаемого персонажа', () => {
-    expect(new Character({name: 'Magician', type: 'Magician', health: 100, level: 1, attack: 10, defence: 40})).toEqual({name: 'Magician', type: 'Magician', level: 1, health: 100, attack: 10, defence: 40});
-  });
-  test.each(
-    actors,
-  )('Проверка создания персонажа %s', (actorItem) => {
-    expect(new Character(actorItem)).toEqual(actorItem);
-  });
-
-  test.each(
-    actors,
-  )('Проверка повышаемости уровня у персонажа %s', (actorItem) => {
-    let actorCheck = new Character(actorItem);
-    let actorExpect = new Character(actorItem);
-    actorCheck.levelUp();
-    actorExpect.level +=1;
-    actorExpect.attack += actorExpect.attack*0.2;
-    actorExpect.defence += actorExpect.defence*0.2;
-    actorExpect.health = 100;
-    expect(actorExpect).toEqual(actorCheck);
-  });
-
-  test.each(
-    actors,
-  )('Проверка отсутствия нанесения ущерба ри значении здоровья 0 %s', (actorItem) => {
-    let actorCheck = new Character(actorItem);
-    let actorExpect = new Character(actorItem);
-    actorCheck.health = 0;
-    actorExpect.health = 0;
-    actorCheck.damage(2);
-    expect(actorExpect).toEqual(actorCheck);
+    expect(() => new Character('Noname', 'Noname')).toThrowError("Неизвестный персонаж")
   });
 
   test('Проверка расчета здоровья после нанесения ущерба', () => {
-    let actorCheck = new Character({name: 'Magician', type: 'Magician', health: 100, level: 1, attack: 10, defence: 40});
+    let actorCheck = new Character('Magician', 'Magician');
+    actorCheck.attack = 10;
+    actorCheck.defence = 40;
     actorCheck.damage(10);
-    expect(actorCheck.health).toBe(94);
+    let result = actorCheck.health;
+    expect(result).toBe(94);
   });
+
+  test('Проверка здоровья со значением 0', () => {
+     let actorCheck = new Character('Magician', 'Magician');
+     actorCheck.attack = 10;
+     actorCheck.defence = 40;
+     actorCheck.health = 0;
+     actorCheck.damage(10);
+     expect(actorCheck.health).toBe(0);
+   });
+
+   test('Проверка повышения уровня ', () => {
+    let actorCheck = new Character('Magician', 'Magician');
+    actorCheck.attack = 50;
+    actorCheck.attack = 10;
+    actorCheck.defence = 40;
+    actorCheck.levelUp();
+    expect(actorCheck).toEqual({name: 'Magician', type: 'Magician', health: 100, level: 2, attack: 12, defence: 48});
+  });
+
 
 }); 

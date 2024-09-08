@@ -1,11 +1,9 @@
-import {actors} from "../Character"
 import Undead from "../Undead";
 
 describe('Проверка класса Undead', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Undead')[0];
-    expect(new Undead(testObject)).toEqual(testObject);
+    const testObject =  {name: 'Undead', type: 'Undead', health: 100, level: 1, attack: 25, defence: 25};
+    expect(new Undead('Undead')).toEqual(testObject);
   }); 
 }); 
- 
-export default Undead;
+

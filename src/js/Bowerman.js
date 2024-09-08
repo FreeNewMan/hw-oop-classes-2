@@ -1,8 +1,10 @@
-import Character, {actors} from './Character';
+import Character from './Character';
 
 class Bowerman extends Character {
-  constructor() {
-    super(actors.filter(item => item.type==='Bowerman')[0]);
+  constructor(name, type = 'Bowerman') {
+    super(name, type);
+    this.attack = 25;
+    this.defence = 25;
     }
 }
  

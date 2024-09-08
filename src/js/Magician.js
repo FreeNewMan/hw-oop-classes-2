@@ -1,8 +1,10 @@
-import Character, {actors} from './Character';
+import Character from './Character';
 
 class Magician extends Character {
-  constructor() {
-    super(actors.filter(item => item.type==='Magician')[0]);
+  constructor(name, type = 'Magician') {
+    super(name, type);
+    this.attack = 10;
+    this.defence = 40;
     }
 }
  

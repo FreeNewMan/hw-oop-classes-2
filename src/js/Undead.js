@@ -1,8 +1,10 @@
-import Character, {actors} from './Character';
+import Character from './Character';
 
 class Undead extends Character {
-  constructor() {
-    super(actors.filter(item => item.type==='Undead')[0]);
+  constructor(name, type = 'Undead') {
+    super(name, type);
+    this.attack = 25;
+    this.defence = 25;
     }
 }
  

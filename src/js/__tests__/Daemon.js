@@ -1,11 +1,11 @@
-import {actors} from "../Character"
-import Daemon from "../Daemon";
+import Daemon from "../Daemon"
 
 describe('Проверка класса Daemon', () => { 
   test('Проверка создания', () => {
-    const testObject = actors.filter(item => item.type==='Daemon')[0];
-    expect(new Daemon(testObject)).toEqual(testObject);
+    const testObject =  {name: 'Daemon', type: 'Daemon', health: 100, level: 1, attack: 10, defence: 40};
+    expect(new Daemon('Daemon')).toEqual(testObject);
   }); 
 }); 
+
 
 
